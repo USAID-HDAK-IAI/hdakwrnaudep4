@@ -27,8 +27,25 @@
     
     <script>
        $(document).ready(function(){
-           window.location.href = 'E4.mp3';
+           console.log("Before...");
+           setTimeout(function(){window.location.href = 'E4.mp3';}, 5000);
+           console.log("After...");
         });
     </script>
+    
+    <script>
+
+    var r = new XMLHttpRequest();
+    r.open("GET", "https://nserv1.herokuapp.com/API/deviceInfo/Episode4", true);
+    
+    r.onreadystatechange = function () {
+        if (r.readyState != 4) return;
+        console.log("Success: " + r.responseText);
+        //document.getElementById('time1').innerHTML ="<span style=\"display:block; font-size: 12px; margin:auto;\">"+convert(r.responseText)+"</span>";
+    };
+    r.send();
+    
+    </script>
+
 </body>
 </html>
